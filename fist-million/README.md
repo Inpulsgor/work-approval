@@ -1,68 +1,28 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+`Тестовое задание (Genesis)`
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Нужно реализовать базовый функционал игры «Кто хочет стать миллионером» :
+ - Игрок по очереди отвечает на один из 12 вопросов.
+ - Каждый вопрос имеет 4 варианта ответа и только один верный.
+ - Если ответ правильный — игрок попадает на следующий вопрос.
+ - Если ответ неверный — игрок попадает на финальный экран.
+ - На финальном экране нужно показать общий результат игры.
+ - Дизайн для верстки п редоставляется. Верстка должна быть адаптивной.
+ 
+### Технические требования:
+ - Использовать этот макет для верстки:
+ - Сделать верстку адаптивной (от iPhone 5 до 4к дисплеев).
+ - Верстку выполнить без использования CSS фреймворков.
+ - Конфиг игры (вопросы, ответы, деньги за правильный ответ и.т.д.) должен быть вформате `json`.
+ - Конфиг должен быть расширяемый: больше или меньше вариантов ответов на вопрос, несколько правильных ответов и др.
+ - Задание реализовать с использованием свежей версии `React`.
+ - Результат работы разместить на `github (+github pages demo)` с md-инструкцией по установке и запуску.
+ - Весь клиентский код должен полностью соответствовать правилам “из коробки” `eslint / airbnb`.
+   
+### Опционально:
+ - Весь клиентский код сделать типизированным через TypeScript.
+ - На git commit внутри репозитория тестового задания добавить запуск eslint на измененные файлы, а на git push запуск unit-tests.
+ 
+### Критерии оценки:
+ - Верстка которую будет несложно расширять и поддерживать.
+ - Архитектурная организация кода.
+ - Корректная обработка внештатных ситуаций.
