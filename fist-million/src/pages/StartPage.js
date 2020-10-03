@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { ReactComponent as Logo } from '../assets/icon.svg';
 
-const StartPage = () => {
+const StartPage = () => { 
   return (
     <section className="start">
       <div className="container">

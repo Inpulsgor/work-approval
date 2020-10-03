@@ -1,0 +1,42 @@
+[
+    {
+    "question" : "What is a color of the sky?",
+    "optionA" : "red",
+    "optionB" : "blue",
+    "optionC" : "purple",
+    "optionD" : "black",
+    "answer" : "blue"
+  },
+  {
+    "question" : "Which car brand has a horse on a logo?",
+    "optionA" : "BMW",
+    "optionB" : "AUDI",
+    "optionC" : "Ferrari",
+    "optionD" : "Mercedes",
+    "answer" : "Ferrari"
+  },
+  {
+    "question" : "sky color?",
+    "optionA" : "red",
+    "optionB" : "blue",
+    "optionC" : "purple",
+    "optionD" : "black",
+    "answer" : "blue"
+  },
+  {
+    "question" : "sky color?",
+    "optionA" : "red",
+    "optionB" : "blue",
+    "optionC" : "purple",
+    "optionD" : "black",
+    "answer" : "blue"
+  },
+  {
+    "question" : "sky color?",
+    "optionA" : "red",
+    "optionB" : "blue",
+    "optionC" : "purple",
+    "optionD" : "black",
+    "answer" : "blue"
+  }
+]
