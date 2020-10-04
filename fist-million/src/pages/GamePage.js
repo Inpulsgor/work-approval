@@ -50,12 +50,10 @@ class GamePage extends Component {
       currentQuestionIndex: prevState.currentQuestionIndex + 1,
     }))
     document.getElementById('correct-sound').play();
-
   }
 
   incorrectAnswer = () => {
     document.getElementById('incorrect-sound').play();
-
   }
 
   handleClick = (e) => {
@@ -74,26 +72,27 @@ render() {
     <audio id="correct-sound" src={correctAnswerAudio}></audio>
     <audio id="incorrect-sound" src={wrongAnswerAudio}></audio>
 
-
-    <section className="game container">
+    <section className="game">
+      <div className="container">
         <div className="game__burger"></div>
         <h2 className="game__question-text">{currentQuestion.question}</h2>
 
         <ul className="game__question-list">
           <li className="game__question-item">
-            <button type="button" onClick={this.handleClick}>{currentQuestion.optionA}</button>
+            <button className="game__button" type="button" onClick={this.handleClick}>{currentQuestion.optionA}</button>
           </li>
           <li className="game__question-item">
-            <button type="button" onClick={this.handleClick}>{currentQuestion.optionB}</button>
+            <button className="game__button" type="button" onClick={this.handleClick}>{currentQuestion.optionB}</button>
           </li>
           <li className="game__question-item">
-            <button type="button" onClick={this.handleClick}>{currentQuestion.optionC}</button>
+            <button className="game__button" type="button" onClick={this.handleClick}>{currentQuestion.optionC}</button>
           </li>
           <li className="game__question-item">
-            <button type="button" onClick={this.handleClick}>{currentQuestion.optionD}</button>
+            <button className="game__button" type="button" onClick={this.handleClick}>{currentQuestion.optionD}</button>
           </li>
         </ul>
-
+        
+        </div>
     </section>
     </>
   );
