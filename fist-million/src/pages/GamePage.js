@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import { slide as Menu } from "react-burger-menu";
+
 import { isEmpty } from "../services/helpers";
 import questions from "../services/questions.json";
 
 // audio
+import countdown from "../assets/audio/countdown.mp3";
 import correctAnswerAudio from "../assets/audio/correctAnswer.mp3";
 import wrongAnswerAudio from "../assets/audio/wrongAnswer.mp3";
+import timeIsOf from "../assets/audio/timeIsOf.mp3";
 
-console.log(questions);
+import { ReactComponent as Answer } from "../assets/answer.svg";
 
 class GamePage extends Component {
   state = {
@@ -20,11 +24,45 @@ class GamePage extends Component {
     score: 0,
     correctAnswers: 0,
     incorrectAnswers: 0,
+    // minutes: 2,
+    // seconds: 0,
   };
 
   componentDidMount() {
+    // document.getElementById("start-sound").play();
+
     const { questions, currentQuestion, nextQuestion } = this.state;
     this.displayQuestions(questions, currentQuestion, nextQuestion);
+
+    // this.myInterval = setInterval(() => {
+    //   const { seconds, minutes } = this.state;
+
+    //   if (seconds > 0) {
+    //     this.setState(({ seconds }) => ({
+    //       seconds: seconds - 1,
+    //     }));
+    //   }
+    //   if (seconds === 0) {
+    //     if (minutes === 0) {
+    //       document.getElementById("start-sound").pause();
+    //       document.getElementById("time-off").play();
+    //       this.myInterval2 = setInterval(() => {
+    //         this.props.history.push("/end");
+    //       }, 4000);
+    //       clearInterval(this.myInterval);
+    //     } else {
+    //       this.setState(({ minutes }) => ({
+    //         minutes: minutes - 1,
+    //         seconds: 59,
+    //       }));
+    //     }
+    //   }
+    // }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.myInterval2);
+    // clearInterval(this.myInterval);
   }
 
   displayQuestions = (
@@ -51,9 +89,13 @@ class GamePage extends Component {
   correctAnswer = () => {
     this.setState(
       (prevState) => ({
-        score: prevState.score + 1,
+        // score: prevState.score + 1,
         correctAnswers: prevState.correctAnswers + 1,
         currentQuestionIndex: prevState.currentQuestionIndex + 1,
+        score:
+          prevState.score === 0
+            ? (prevState.score += 500)
+            : prevState.score * 2,
       }),
       () => {
         this.displayQuestions(
@@ -63,6 +105,7 @@ class GamePage extends Component {
         );
       }
     );
+    // document.getElementById("start-sound").pause();
     document.getElementById("correct-sound").play();
   };
 
@@ -79,7 +122,12 @@ class GamePage extends Component {
         );
       }
     );
+    // document.getElementById("start-sound").pause();
     document.getElementById("incorrect-sound").play();
+    this.myInterval2 = setInterval(() => {
+      this.props.history.push("/end");
+    }, 3000);
+    // this.props.history.push("/end");
   };
 
   handleClick = (e) => {
@@ -92,17 +140,24 @@ class GamePage extends Component {
     }
   };
 
+  showSettings(event) {
+    event.preventDefault();
+  }
+
   render() {
     const { currentQuestion } = this.state;
 
     return (
       <>
+        <audio id="start-sound" src={countdown}></audio>
         <audio id="correct-sound" src={correctAnswerAudio}></audio>
         <audio id="incorrect-sound" src={wrongAnswerAudio}></audio>
+        <audio id="time-off" src={timeIsOf}></audio>
+
+        <Menu width={"100%"} noOverlay></Menu>
 
         <section className="game">
           <div className="container">
-            <div className="game__burger"></div>
             <h2 className="game__question-text">{currentQuestion.question}</h2>
 
             <ul className="game__question-list">
@@ -154,3 +209,13 @@ class GamePage extends Component {
 }
 
 export default GamePage;
+
+// <div className="timer">
+//   {minutes === 0 && seconds === 0 ? (
+//     <h1>Time Remaining {`${minutes}:0${seconds}`}</h1>
+//   ) : (
+//     <h1>
+//       Time Remaining: {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+//     </h1>
+//   )}
+// </div>;
