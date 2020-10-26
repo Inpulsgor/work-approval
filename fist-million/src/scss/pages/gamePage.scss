@@ -1,11 +1,18 @@
-@import '../variables.scss';
+@import "../variables.scss";
+
+.timer {
+  position: absolute;
+}
 
 .game {
   font-family: $main-font;
-  padding: 21px 0 24px;
-  background-color: #E5E5E5;
+  padding: 136px 0 24px;
   width: 100%;
   height: 100vh;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #e5e5e5;
 
   &__burger {
     margin-bottom: 100px;
@@ -22,23 +29,96 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    :not(:last-child) {
+      margin-bottom: 8px;
+    }
   }
 
   &__question-item {
     width: 100%;
   }
 
-  :not(:last-of-type){
-    margin-bottom: 8px;
-  }
-
   &__button {
-    width: 100%;
-    height: 56px;
-    text-align: left;
-    color: #1C1C21;
-    border: 1px solid #D0D0D8;
-    background-color: #fff;
+    display: block;
+    position: relative;
+    box-sizing: border-box;
+    margin: 0 auto;
+    border: none;
+    min-width: 288px;
+    min-height: 56px;
+    text-align: unset;
+    color: #1c1c21;
+    background-color: transparent;
+    background-image: url("../../assets/answer.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: auto;
+    padding-left: 40px;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      border-left: 1px solid #d0d0d8;
+      height: 17px;
+      transform: rotate(90deg);
+    }
+
+    &::before {
+      left: -9px;
+      top: 19.5px;
+    }
+
+    &::after {
+      right: -9px;
+      top: 19.5px;
+    }
   }
 }
 
+.bm-burger-button {
+  top: 21px;
+  right: 20px;
+  position: fixed;
+  width: 16px;
+  height: 14px;
+  margin-bottom: 20px;
+}
+
+.bm-burger-bars {
+  background: #1c1c21;
+  border-radius: 15%;
+}
+
+.bm-cross-button {
+  height: 13px;
+  width: 13px;
+}
+
+.bm-cross {
+  background: #1c1c21;
+}
+
+.bm-menu-wrap {
+  left: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.bm-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  // background: #e5e5e5;
+  background: #ac6363;
+  font-size: 1.15em;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+  color: #b8b7ad;
+  padding: 0.8em;
+}

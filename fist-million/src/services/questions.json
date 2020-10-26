@@ -1,42 +1,66 @@
 [
-    {
-    "question" : "What is a color of the sky?",
-    "optionA" : "red",
-    "optionB" : "blue",
-    "optionC" : "purple",
-    "optionD" : "black",
-    "answer" : "blue"
+  {
+    "question": "What scientist first determined that human sight results from images projected onto the retina?",
+    "optionA": "Galileo",
+    "optionB": "Copernicus",
+    "optionC": "Johannes Kepler",
+    "optionD": "Isaac Newton",
+    "answer": "Johannes Kepler"
   },
   {
-    "question" : "Which car brand has a horse on a logo?",
-    "optionA" : "BMW",
-    "optionB" : "AUDI",
-    "optionC" : "Ferrari",
-    "optionD" : "Mercedes",
-    "answer" : "Ferrari"
+    "question": "How many days make up a non-leap year in the Islamic calendar?",
+    "optionA": "365",
+    "optionB": "400",
+    "optionC": "354",
+    "optionD": "376",
+    "answer": "354"
   },
   {
-    "question" : "sky color?",
-    "optionA" : "red",
-    "optionB" : "blue",
-    "optionC" : "purple",
-    "optionD" : "black",
-    "answer" : "blue"
+    "question": "Which of these US presidents appeared on the television series <Laugh-In>?",
+    "optionA": "Lyndon Johnson",
+    "optionB": "Richard Nixon",
+    "optionC": "Jimmy Carter",
+    "optionD": "Gerald Ford",
+    "answer": "Richard Nixon"
   },
   {
-    "question" : "sky color?",
-    "optionA" : "red",
-    "optionB" : "blue",
-    "optionC" : "purple",
-    "optionD" : "black",
-    "answer" : "blue"
+    "question": "The Earth is approximately how many miles away from the Sun?",
+    "optionA": "9.3 million",
+    "optionB": "39 million",
+    "optionC": "93 million",
+    "optionD": "193 million",
+    "answer": "93 million"
   },
   {
-    "question" : "sky color?",
-    "optionA" : "red",
-    "optionB" : "blue",
-    "optionC" : "purple",
-    "optionD" : "black",
-    "answer" : "blue"
+    "question": "Which insect shorted out an early supercomputer and inspired the term <computer bug>?",
+    "optionA": "Moth",
+    "optionB": "Roach",
+    "optionC": "Fly",
+    "optionD": "Japanese beetle",
+    "answer": "Moth"
+  },
+  {
+    "question": "Which of the following men does not have a chemical element named for him?",
+    "optionA": "Albert Einstein",
+    "optionB": "Niels Bohr",
+    "optionC": "Isaac Newton",
+    "optionD": "Enrico Fermi",
+    "answer": "Isaac Newton"
+  },
+  {
+    "question": "Which of the following landlocked countries is entirely contained within another country?",
+    "optionA": "Lesotho",
+    "optionB": "Burkina Faso",
+    "optionC": "Mongolia",
+    "optionD": "Luxembourg",
+    "answer": "Lesotho"
+  },
+  {
+    "question": "In the children’s book series, where is Paddington Bear originally from?",
+    "optionA": "India",
+    "optionB": "Peru",
+    "optionC": "Canada ",
+    "optionD": "Iceland",
+    "answer": "Peru"
   }
 ]
