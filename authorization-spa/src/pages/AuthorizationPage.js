@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+
+import { AuthForm } from '../components/index';
 
 const AuthorizationPage = () => {
   return (
-    <div>AuthorizationPage</div>
+    <div className="container">
+      <AuthForm/>
+    </div>
   )
 }
 

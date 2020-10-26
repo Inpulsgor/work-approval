@@ -1,10 +1,12 @@
+@import "~bootstrap/scss/bootstrap";
+
 // @import "./helpers/fonts.scss";
 @import "./helpers/normalize";
 @import "./helpers/mixins.scss";
 @import "./helpers/variables.scss";
 
 @import './pages/all';
-// @import './components/all';
+@import './components/all';
 
 
 html {
