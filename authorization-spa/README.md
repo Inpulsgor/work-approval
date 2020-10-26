@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+## Условия тестового задания
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```shell
+Адрес для запросов и ws-соединения http://testapi.marit.expert:3003. Пользователь для аутентификации:логин - simsim, пароль - 12345. Выполненное задание залить на GitHub. В репозитории должны быть как исходники так и собранный проект. Ссылку на репозиторий отправить vadim.lilianov@marit.expert. По всем вопросам обращаться vadim.lilianov@marit.expert
+```
+## Минимально обязательный стэк технологий
+ - React
+ - React router
+ - Redux
+ - Redux Thunk middleware
+ - Socket.io
+ - HTTP
+ - Bootstrap/Materialize
+ - webpack
 
-## Available Scripts
+### Задача
+Создать SPA с двумя страницами - логин, отображение данных. К вёрстке два требования: 
+1) адаптивность для разных разрешений монитора(для двух будет достаточно). 
+2) страница отображения данных имеет вид 4 колонок в которых отображаются персонажи соответсвующей расы. Остальная вёрстка и внешний вид приложения - на Ваше усмотрение. Способ изображения персонажа в колонке на Ваше усмотрение(прямоугольник, пиктограмма, картинка и тд).
 
-In the project directory, you can run:
+### Необходимые функции которое должно выполнять приложение
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Аутентификация
+Аутентификация пользователя
+Аутентификация пользователя производится отправкой POST-запроса на путь "/auth". Тело запроса должно содержать поля "login" и "password". Формат кодировки тела "application/x-www-form-urlencoded". Формат ответов от сервера всегда "json". Варианты ответа от сервера:
+"{success:true}" - аутентификация успешна. Направить пользователя на страницу с данными
+"{success:false, err:"wrong password"}" - неверный пароль. Вывести соответсвующее уведоммление пользователю.
+"{success:false, err:`no such user`}" - пользователь не существует. Вывести соответсвующее уведоммление пользователю.
+Проверка сессии
+Проверка сессии пользователя производится отправкой GET-запроса на путь "/check". Формат ответов от сервера всегда "json". Варианты ответа от сервера:
+"{success:true}" - проверка сессии успешна. Направить пользователя на страницу с данными
+"{success:false}" - проверка сессии неуспешна. Направить пользователя на страницу аутентификации
+Завершение сессии
+Проверка сессии пользователя производится отправкой GET-запроса на путь "/logout". Формат ответов от сервера всегда "json". Варианты ответа от сервера:
+"{success:true}" - завершение сессии прошло успешно. Направить пользователя на страницу аутентификации
+"{success:false}" - завершение сессии прошло неуспешно. Вывести соответсвующее уведоммление пользователю.
+2. Вёрстка
+Страница логина
+На Ваше усмотрение
+Страница с данными
+Страница с данными должна содержать минимум 4 колонки где будут отображаться персонажи каждой расы. Есть 4 расы: Hobbit, Human, Dworf, Elf. На каждой колонке должна быть кнопка "Добавить". На каждом элементе в колонке должны быть кнопки "Изменить имя" и "Удалить". Вид кнопок на ваше усмотрение(текст или пиктограмма или картинка)
+3. CRUD
+Все операции с данными выполняются через websocket. Websocket-соединение устанавливается только с аутентифицированными пользователями. Если неаутентифицированный пользователь попробует установить webscoket-соединение, то серевер сбросит эту попытку. За всю websocket-сессию клиент должен запрашивать данные один раз сразу после подключении. Далее список данных должен изменяться только от входящих сообщений. Формат общения через websocket "{cmd:"какаято комманда", data:{какие-то данные}}". Ответ от сервера может быть двумя способами: вернуть данные в callback или вернуть данные сообщением. В случае работы данными в callback возвращается статус операции, а изменённый/добавленный элемент вовзращается сообщением. В случае получения данных - данные возвращаются в callback.
+Получение списка данных
+Список данных запрашивается отправкой сообщения "{cmd:"get_list"}" на сервер. Данные вернутся в callback. На клиенте получение списка будет иметь примерно следующий вид:
+socket.send({cmd:"get_list"}, function(res){
+//В res вернётся список данных для дальнейшей обработки
+})
+Данные имеют примерно следующий вид:[ { id:1, name:"Frodo", race:"Hobbit" }, { id:2, name:"Aragorn", race:"Human" }, { id:3, name:"Gimli", race:"Dworf" }, { id:4, name:"Legolas", race:"Elf" } ]
+Каждый элемент списка необходимо отобразить в соответвующей колонке в зависимости от значения поля "race"
+Добавить элемент в список
+Добавление элемента в список выполняется отправкой комманды на сервер "{cmd:"add_in_list", data:{name:"NAME", race:"RACE"}}". Значение поля "name" вводится пользователем. Значение поля "race" должно быть автоматически заполнено в зависимти от того в колонку какой расы добавляют перонажа. В ответ в callback вернется "{success:true}", если добавление прошло успешно. Добавленный элемент вернется сообщением!!!(не в сallback) от сервера следующего вида "{cmd:"new_element_in_list", data:{id:$Integer$, name:$String$, race:$String$}}". Добавленный элемент необходимо разместить в соответсвубщей колонке по расе.
+Редактировать элемент в списке
+Редактирование поля "name" элемента в списке выполняется отправкой комманды на сервер "{cmd:"edit_in_list", data:{id:$Integer$,name:$String$}}". Значение поля "name" вводится пользователем. То есть на элементе должна быть кнопка, например, "Изменить имя". Редактирование поля "race" элемента в списке выполняется отправкой комманды "{cmd:"change_race", data:{id:$Integer$,race:$String$}}". Измнение расы должно быть реализовано через перетаскивание элмента из одной колонки в другую. В ответ в callback вернется "{success:true}", если редактирование прошло успешно; {success:false, err:"No such element with id=$Integer$"} если редактрование прошло нуеспешно. Отредактированный элемент вернется сообщением!!!(не в сallback) от сервера следующего вида "{cmd:"edit_element_name_in_list", data:{id:$Integer$, name:$String$, race:$String$}}" если редактировали имя; "{cmd:"edit_element_name_in_list", data:{id:$Integer$, name:$String$, race:$String$}}" если редактировали расу. Отредактированный элемент необходимо разместить в соответсвубщей колонке по расе.
+Удалить элемент из списка
+Удаление элемента из списке выполняется отправкой комманды на сервер "{cmd:"remove_from_list", data:{id:$Integer$}}". В ответ в callback вернется "{success:true}", если редактирование прошло успешно; {success:false, err:"No such element with id=$Integer$"} если редактрование прошло нуеспешно. Удаленный элемент вернется сообщением!!!(не в сallback) от сервера следующего вида "{cmd:"remove_element_from_list", data:{id:$Integer$}}". Удаленный элемент необходимо удалить в соответсвующей колонке по расе.
+4. Роутинг
+Должно быть мимнимум две страницы - аутентификация(например "/login") и данные(например, "/characters"). На страницу данных имеют доступ только аутентифицированные пользователи. Неаутентифицированных пользоватлей редиректить на страницу логина.
+5. Сборка проекта
+Как сборщик желательно использовать `webpack`. Прелоадеры, плагины и тд на Ваше усмотрение. Структура собранного проекта
+```js
+index.html
+app.js
+/static
+/js
+/css
+/images
+```
