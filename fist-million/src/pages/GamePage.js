@@ -19,7 +19,7 @@ class GamePage extends Component {
     questionsNumber: 0,
     currentQuestionIndex: 0,
     score: 0,
-    correctAnswers: 0
+    correctAnswers: 0,
   }
 
   componentDidMount() {
@@ -46,7 +46,7 @@ class GamePage extends Component {
   correctAnswer = () => {
     this.setState(prevState => ({
       score: prevState.score + 1,
-      correctAnswer: prevState.correctAnswer + 1, 
+      correctAnswers: prevState.correctAnswers + 1, 
       currentQuestionIndex: prevState.currentQuestionIndex + 1,
     }))
     document.getElementById('correct-sound').play();
@@ -54,6 +54,10 @@ class GamePage extends Component {
 
   incorrectAnswer = () => {
     document.getElementById('incorrect-sound').play();
+    setTimeout(() => {
+      this.props.history.push('/end')
+    }, 3000);
+
   }
 
   handleClick = (e) => {
