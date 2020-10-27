@@ -1,15 +1,20 @@
-import thunk from "redux-thunk";
-import { createStore, applyMiddleware } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { persistStore } from "redux-persist";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import thunk from "redux-thunk";
 
 import loaderSlice from "./loader/loaderSlice";
-import authReducer from "./auth/authReducer";
+import authSlice from "./auth/authSlice";
+
+const authPersistConfig = {
+  key: "auth",
+  storage,
+};
 
 export const store = configureStore({
   reducer: {
     isLoading: loaderSlice.reducer,
-    auth: authReducer,
+    auth: persistReducer(authPersistConfig, authSlice.reducer),
   },
   middleware: [thunk],
 });

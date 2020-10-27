@@ -12,11 +12,9 @@ const AuthForm = () => {
   const handleLogin = (e) => {
     setLogin(e.target.value);
   };
-
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 

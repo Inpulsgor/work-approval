@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
 const CharactersPage = () => {
-  return (
-    <div>CharactersPage</div>
-  )
-}
+  useEffect(() => {}, []);
 
-export default CharactersPage
+  return <div>CharactersPage</div>;
+};
+
+export default CharactersPage;

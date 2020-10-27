@@ -1,16 +1,15 @@
-import React, { Suspense } from 'react';
-import { useSelector } from 'react-redux';
-import { Switch, Route, Redirect } from "react-router-dom";
-import { CommonLoading } from 'react-loadingg';
+import React, { Suspense } from "react";
+import { useSelector } from "react-redux";
+import { Switch, Redirect } from "react-router-dom";
+import { CommonLoading } from "react-loadingg";
 
-import { AuthorizationPage, CharactersPage } from './pages/index';
-// import {  } from './components/index';
-
-import './scss/App.scss';
+import routes from "./routes";
+import { PrivateRoute, PublicRoute } from "./services/helpers";
+import "./scss/App.scss";
 
 function App() {
-  const isLoading = useSelector(state => state.isLoading.isLoading);
-  
+  const isLoading = useSelector((state) => state.isLoading.isLoading);
+
   return (
     <Suspense fallback={<CommonLoading color="orange" size="large" />}>
       {isLoading && (
@@ -19,9 +18,18 @@ function App() {
         </div>
       )}
       <Switch>
-        <Route path="/login" component={AuthorizationPage} />
-        <Route path="/characters" component={CharactersPage} />
-        <Redirect to="/login"/>
+        {routes.map((route) => {
+          return route.private ? (
+            <PrivateRoute key={route.label} {...route} />
+          ) : (
+            <PublicRoute
+              key={route.label}
+              {...route}
+              restricted={route.restricted}
+            />
+          );
+        })}
+        <Redirect to="/login" />
       </Switch>
     </Suspense>
   );

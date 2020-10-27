@@ -1,41 +1,45 @@
 import axios from "axios";
-import authActions from "./authActions";
+
+import api from "../../services/api";
+import authSlice from "./authSlice";
+import loaderSlice from "../loader/loaderSlice";
 
 axios.defaults.baseURL = "http://testapi.marit.expert:3003";
 
 // login
 const login = (credentials) => (dispatch) => {
-  dispatch(authActions.loginRequest());
+  dispatch(loaderSlice.actions.loadingTrue());
 
-  axios
-    .post("/auth", credentials)
-    .then((response) => {
-      console.log(response);
-      //   dispatch(authActions.loginSuccess(response.data));
+  api
+    .login(credentials)
+    .then(({ data }) => {
+      dispatch(authSlice.actions.clearError());
+
+      if (data.err) {
+        dispatch(authSlice.actions.loginError(data.err));
+        return;
+      }
+      if (data.success) {
+        api.token.set(data.success);
+        dispatch(authSlice.actions.loginSuccess(data.success));
+      }
     })
-    .catch((error) => dispatch(authActions.loginError(error)));
+    .catch((error) => dispatch(authSlice.actions.loginError(error)))
+    .finally(dispatch(loaderSlice.actions.loadingFalse()));
 };
 
 // logout
 const logout = () => (dispatch) => {
-  dispatch(authActions.logoutRequest());
+  dispatch(loaderSlice.actions.loadingTrue());
 
-  axios
-    .get("/logout")
+  api
+    .logout()
     .then(() => {
-      dispatch(authActions.logoutSuccess());
+      api.token.unset();
+      dispatch(authSlice.actions.logoutSuccess());
     })
-    .catch((error) => dispatch(authActions.logoutError(error)));
+    .catch((error) => dispatch(authSlice.actions.logoutError(error)))
+    .finally(dispatch(loaderSlice.actions.loadingFalse()));
 };
 
-// check
-const check = () => (dispatch, getState) => {
-  dispatch(authActions.getCurrentUserRequest());
-
-  axios
-    .get("/check")
-    .then(({ data }) => dispatch(authActions.getCurrentUserSuccess(data)))
-    .catch((error) => authActions.getCurrentUserError(error));
-};
-
-export default { login, logout, check };
+export default { login, logout };
