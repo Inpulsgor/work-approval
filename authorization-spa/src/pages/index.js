@@ -1,2 +1,2 @@
-export { default as AuthorizationPage } from "./AuthorizationPage";
-export { default as CharactersPage } from "./CharactersPage";
+export { default as AuthorizationPage } from "./authorizationPage/AuthorizationPage";
+export { default as CharactersPage } from "./charactersPage/CharactersPage";
