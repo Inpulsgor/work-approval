@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { LogoutButton } from "../../components";
 
 const CharactersPage = () => {
-  useEffect(() => {}, []);
-
-  return <div>CharactersPage</div>;
+  return (
+    <div className="container">
+      <LogoutButton />
+    </div>
+  );
 };
 
 export default CharactersPage;

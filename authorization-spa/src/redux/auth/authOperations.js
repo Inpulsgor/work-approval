@@ -1,10 +1,6 @@
-import axios from "axios";
-
 import api from "../../services/api";
 import authSlice from "./authSlice";
 import loaderSlice from "../loader/loaderSlice";
-
-axios.defaults.baseURL = "http://testapi.marit.expert:3003";
 
 // login
 const login = (credentials) => (dispatch) => {
@@ -20,8 +16,8 @@ const login = (credentials) => (dispatch) => {
         return;
       }
       if (data.success) {
-        api.token.set(data.success);
-        dispatch(authSlice.actions.loginSuccess(data.success));
+        dispatch(authSlice.actions.loginStatus(data.success));
+        dispatch(authSlice.actions.loginSuccess(data));
       }
     })
     .catch((error) => dispatch(authSlice.actions.loginError(error)))
@@ -34,9 +30,10 @@ const logout = () => (dispatch) => {
 
   api
     .logout()
-    .then(() => {
-      api.token.unset();
+    .then((res) => {
+      console.log(res);
       dispatch(authSlice.actions.logoutSuccess());
+      dispatch(authSlice.actions.clearError());
     })
     .catch((error) => dispatch(authSlice.actions.logoutError(error)))
     .finally(dispatch(loaderSlice.actions.loadingFalse()));

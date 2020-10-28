@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 // import api from "../services/api";
-import { authOperations } from "../redux/auth";
+import { authOperations } from "../../redux/auth";
 
 const AuthForm = () => {
   const [login, setLogin] = useState("");
