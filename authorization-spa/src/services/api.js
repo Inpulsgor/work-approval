@@ -1,7 +1,8 @@
 import axios from "axios";
+import io from "socket.io-client";
 const qs = require("querystring");
-// import io from "socket.io-client";
 
+const url = "http://testapi.marit.expert:3003";
 axios.defaults.baseURL = "http://testapi.marit.expert:3003";
 
 const config = {
@@ -19,8 +20,7 @@ const check = () => axios.get("/check");
 
 // WSocket
 
-// const url = "http://testapi.marit.expert:3003";
-// const session = io(url, { transports: ["websocket"], cookie: true });
-// console.log(session);
+const socket = io(url, { transports: ["websocket"], cookie: true });
+// const socket = io(url);
 
-export default { login, logout, check };
+export default { login, logout, check, socket };

@@ -8,8 +8,8 @@ const login = (credentials) => (dispatch) => {
 
   api
     .login(credentials)
-    .then(({ data }) => {
-      console.log("data", data);
+    .then((response) => {
+      const { data } = response;
       dispatch(authSlice.actions.clearError());
 
       if (data.err) {
@@ -32,7 +32,6 @@ const logout = () => (dispatch) => {
   api
     .logout()
     .then((res) => {
-      console.log(res);
       dispatch(authSlice.actions.logoutSuccess());
       dispatch(authSlice.actions.clearError());
     })

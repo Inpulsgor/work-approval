@@ -9,14 +9,13 @@ import authSlice from "./auth/authSlice";
 const authPersistConfig = {
   key: "auth",
   storage,
-  whitelist: ["isAuthenticated"],
+  // whitelist: ["isAuthenticated"],
 };
 
 export const store = configureStore({
   reducer: {
     isLoading: loaderSlice.reducer,
     auth: persistReducer(authPersistConfig, authSlice.reducer),
-    // auth: authSlice.reducer,
   },
   middleware: [thunk],
 });

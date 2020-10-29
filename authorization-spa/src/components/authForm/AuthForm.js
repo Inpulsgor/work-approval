@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-// import api from "../services/api";
 import { authOperations } from "../../redux/auth";
 
 const AuthForm = () => {
@@ -17,6 +16,10 @@ const AuthForm = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!login || !password) {
+      return alert("enter login and password");
+    }
 
     const loginParams = (login, password) => ({
       login,
