@@ -9,16 +9,16 @@ const login = (credentials) => (dispatch) => {
   api
     .login(credentials)
     .then((response) => {
-      const { data } = response;
+      console.log(response);
       dispatch(authSlice.actions.clearError());
 
-      if (data.err) {
-        dispatch(authSlice.actions.loginError(data.err));
+      if (response.data.err) {
+        dispatch(authSlice.actions.loginError(response.data.err));
         return;
       }
-      if (data.success) {
-        dispatch(authSlice.actions.loginStatus(data.success));
-        dispatch(authSlice.actions.loginSuccess(data));
+      if (response.data.success) {
+        dispatch(authSlice.actions.loginStatus(response.data.success));
+        dispatch(authSlice.actions.loginSuccess(response.data));
       }
     })
     .catch((error) => dispatch(authSlice.actions.loginError(error)))
