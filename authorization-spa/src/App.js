@@ -5,6 +5,7 @@ import { CommonLoading } from "react-loadingg";
 
 import routes from "./routes";
 import { PrivateRoute, PublicRoute } from "./services/helpers";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./scss/App.scss";
 
 function App() {

@@ -1,5 +1,9 @@
 import axios from "axios";
+import io from "socket.io-client";
+
 const qs = require("querystring");
+
+// CRUD
 
 axios.defaults.baseURL = "http://testapi.marit.expert:3003";
 
@@ -12,9 +16,7 @@ const config = {
 
 const login = (credentials) =>
   axios.post("/auth", qs.stringify(credentials), config);
-
 const logout = () => axios.get("/logout");
-
 const check = () =>
   axios.get("/check", {
     method: "GET",
@@ -27,4 +29,9 @@ const check = () =>
     credentials: "same-origin",
   });
 
-export default { login, logout, check };
+// WS
+
+const url = "http://testapi.marit.expert:3003";
+const session = io(url, { transports: ["websocket"], cookie: true });
+
+export default { login, logout, check, session };

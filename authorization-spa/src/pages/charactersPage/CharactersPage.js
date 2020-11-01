@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Navbar } from "../../components/";
 import { useSelector } from "react-redux";
-import io from "socket.io-client";
 
-import { LogoutButton } from "../../components";
 import api from "../../services/api";
 
 const CharactersPage = () => {
@@ -11,27 +10,24 @@ const CharactersPage = () => {
   console.log(characters);
 
   useEffect(() => {
-    const url = "http://testapi.marit.expert:3003";
-    const session = io(url, { transports: ["websocket"], cookie: true });
-
-    session.send({ cmd: "get_list" }, function (res) {
-      setCharacters(res);
-    });
-  }, []);
-
-  useEffect(() => {
     if (isAuthenticated) {
-      api
-        .check()
-        .then((res) => console.log("check", res))
-        .catch((err) => console.log(err));
+      api.session.send({ cmd: "get_list" }, (res) => setCharacters(res));
     }
   }, [isAuthenticated]);
 
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     api
+  //       .check()
+  //       .then((res) => console.log("check", res))
+  //       .catch((err) => console.log(err));
+  //   }
+  // }, [isAuthenticated]);
+
   return (
-    <div className="container">
-      <LogoutButton />
-    </div>
+    <>
+      <Navbar />
+    </>
   );
 };
 
