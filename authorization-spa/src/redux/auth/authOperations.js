@@ -9,7 +9,7 @@ const login = (credentials) => (dispatch) => {
   api
     .login(credentials)
     .then((response) => {
-      console.log(response);
+      // console.log("login", response);
       dispatch(authSlice.actions.clearError());
 
       if (response.data.err) {
