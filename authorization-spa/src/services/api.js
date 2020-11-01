@@ -1,8 +1,6 @@
 import axios from "axios";
-// import io from "socket.io-client";
 const qs = require("querystring");
 
-// const url = "http://testapi.marit.expert:3003";
 axios.defaults.baseURL = "http://testapi.marit.expert:3003";
 
 const config = {
@@ -28,9 +26,5 @@ const check = () =>
     withCredentials: true,
     credentials: "same-origin",
   });
-
-// WSocket
-
-// const socket = io(url, { transports: ["websocket"], cookie: true });
 
 export default { login, logout, check };

@@ -4,7 +4,6 @@ import io from "socket.io-client";
 
 import { LogoutButton } from "../../components";
 import api from "../../services/api";
-const url = "http://testapi.marit.expert:3003";
 
 const CharactersPage = () => {
   const [characters, setCharacters] = useState(null);
@@ -12,7 +11,9 @@ const CharactersPage = () => {
   console.log(characters);
 
   useEffect(() => {
+    const url = "http://testapi.marit.expert:3003";
     const session = io(url, { transports: ["websocket"], cookie: true });
+
     session.send({ cmd: "get_list" }, function (res) {
       setCharacters(res);
     });
