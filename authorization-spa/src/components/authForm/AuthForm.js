@@ -18,7 +18,7 @@ const AuthForm = () => {
     e.preventDefault();
 
     if (!login || !password) {
-      return alert("enter login and password");
+      return;
     }
 
     const loginParams = (login, password) => ({

@@ -125,3 +125,18 @@ input:focus:valid {
   height: 100%;
   z-index: 999999;
 }
+
+.column {
+  padding-top: 20px;
+  text-align: center;
+  background-color: rgba(228, 228, 228, 0.3);
+  border-radius: 5px;
+
+  &__title {
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    margin-right: auto;
+  }
+}

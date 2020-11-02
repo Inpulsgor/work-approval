@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../../components/";
+import { CharactersList, Navbar } from "../../components/";
 import { useSelector } from "react-redux";
 
 import api from "../../services/api";
@@ -7,7 +7,6 @@ import api from "../../services/api";
 const CharactersPage = () => {
   const [characters, setCharacters] = useState(null);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  console.log(characters);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -15,19 +14,35 @@ const CharactersPage = () => {
     }
   }, [isAuthenticated]);
 
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     api
-  //       .check()
-  //       .then((res) => console.log("check", res))
-  //       .catch((err) => console.log(err));
-  //   }
-  // }, [isAuthenticated]);
+  const addCharacter = () => {
+    api.session.send({
+      cmd: "add_in_list",
+      data: { name: "NAME", race: "RACE" },
+    });
+  };
+
+  const editCharacter = () => {
+    api.session.send({
+      cmd: "edit_in_list",
+      data: { id: 5, name: "name" },
+    });
+  };
+  const removeCharacter = () => {
+    api.session.send({ cmd: "remove_from_list", data: { id: 5 } });
+  };
 
   return (
-    <>
+    <section className="characters">
       <Navbar />
-    </>
+      {characters && (
+        <CharactersList
+          characters={characters}
+          addCharacter={addCharacter}
+          editCharacter={editCharacter}
+          removeCharacter={removeCharacter}
+        />
+      )}
+    </section>
   );
 };
 
