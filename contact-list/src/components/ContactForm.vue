@@ -3,18 +3,18 @@
     <form class="contact__form">
 
       <label>First name
-        <input v-model="firstName" type="text" name="firstName" required>
+        <input @change="handleChangeName" v-bind:value="firstName" type="text" name="firstName" required>
       </label>
 
       <label>Last name
-        <input v-model="lastName" type="text" name="lastName" required>
+        <input @change="handleChangeLastName" v-bind:value="lastName"  type="text" name="lastName" required>
       </label>
 
       <label>Email
-        <input v-model="email" type="email" name="email" required>
+        <input @change="handleChangeEmail" v-bind:value="email" type="email" name="email" required>
       </label>
 
-      <button @click="createContact" type="submit">Add</button>
+      <button @click="handleSubmit" type="submit">Add</button>
 
     </form>
   </div>
@@ -34,7 +34,17 @@ export default {
   },
   methods: {
     ...mapActions(["addContact"]),
-    createContact(e) {
+
+    handleChangeName({ target }) {
+      this.firstName = target.value;
+    },
+    handleChangeLastName({ target }) {
+      this.lastName = target.value;
+    },
+    handleChangeEmail({ target }) {
+      this.email = target.value;
+    },
+    handleSubmit(e) {
       e.preventDefault();
       this.addContact({
         id: v1(),
@@ -42,6 +52,9 @@ export default {
         lastName: this.lastName,
         email: this.email,
       })
+      this.firstName = "";
+      this.lastName = "";
+      this.email = "";
     }
   }
 }

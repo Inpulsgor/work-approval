@@ -1,9 +1,9 @@
 <template>
   <li>
     <div>
-      <span>first name</span>
-      <span>last name</span>
-      <span>email</span>
+      <span>{{contact.firstName}}</span>
+      <span>{{contact.lastName}}</span>
+      <span>{{contact.email}}</span>
       <button>Edit</button>
       <button>Delete</button>
     </div>
@@ -14,6 +14,11 @@
 export default {
   name: 'contactItem',
   components: {}, 
+  props: {
+    contact: {
+
+    }
+  }
 }
 </script>
 
