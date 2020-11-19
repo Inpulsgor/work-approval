@@ -18,11 +18,16 @@ export default new Vuex.Store({
     addContact({ commit }, contact) {
       commit("add_contact", contact);
     },
+    deleteContact({ commit }, id) {
+      commit("delete_contact", id);
+    },
   },
   mutations: {
     add_contact(state, contact) {
       state.contacts.push(contact);
-      console.log(contact);
+    },
+    delete_contact(state, id) {
+      state.contacts = state.contacts.filter((contact) => contact.id !== id);
     },
   },
   modules: {},
