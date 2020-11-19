@@ -5,11 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    contacts: [
-      { id: 1, firstName: "Mango", lastName: "Snow", email: "mango@gmail.com" },
-      { id: 2, firstName: "Poly", lastName: "Smith", email: "poly@gmail.com" },
-      { id: 3, firstName: "Ajax", lastName: "Sweet", email: "ajax@gmail.com" },
-    ],
+    contacts: [],
+    confirmed: false,
   },
   getters: {
     allContacts: (state) => state.contacts,

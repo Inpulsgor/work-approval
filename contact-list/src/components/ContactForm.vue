@@ -1,6 +1,6 @@
 <template>
     <div class="contact">
-    <form class="contact__form">
+    <form class="contact__form" @submit.prevent="handleSubmit">
 
       <label>First name
         <input @change="handleChangeName" v-bind:value="firstName" type="text" name="firstName" required>
@@ -14,7 +14,7 @@
         <input @change="handleChangeEmail" v-bind:value="email" type="email" name="email" required>
       </label>
 
-      <button @click="handleSubmit" type="submit">Add</button>
+      <button type="submit">Add</button>
 
     </form>
   </div>
@@ -45,7 +45,6 @@ export default {
       this.email = target.value;
     },
     handleSubmit(e) {
-      e.preventDefault();
       this.addContact({
         id: v1(),
         firstName: this.firstName,
