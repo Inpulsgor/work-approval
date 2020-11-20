@@ -3,19 +3,20 @@
     <form class="form" @submit.prevent="handleSubmit">
 
       <div class="form__group">
-        <label class="form__label" for="first">First name</label>
-        <input class="form__input" @change="handleChangeName" v-bind:value="firstName" type="text" name="firstName" id="first" required>
-      </div>
-
-      <div class="form__group">
-        <label class="form__label" for="last">Last name</label>
-        <input class="form__input" @change="handleChangeLastName" v-bind:value="lastName"  type="text" name="lastName" id="last" required>
+        <label class="form__label" for="name">Name</label>
+        <input class="form__input" :class="{'filled': name !== ''}" @change="handleChangeName" v-bind:value="name" type="text" name="name" id="name" required>
       </div>
 
       <div class="form__group">
         <label class="form__label" for="email">Email</label>
         <input class="form__input" @change="handleChangeEmail" v-bind:value="email" type="email" name="email" id="email" required>
       </div>
+
+      <div class="form__group">
+        <label class="form__label" for="address">Address</label>
+        <input class="form__input" @change="handleChangeAddress" v-bind:value="address"  type="text" name="address" id="address" required>
+      </div>
+      
       <button class="form__button" type="submit">Add</button>
     </form>
   </div>
@@ -28,54 +29,39 @@ import { v1 } from 'uuid'
 export default {
   data() {
     return {
-      firstName: '',
-      lastName: '',
+      name: '',
       email: '',
+      address: '',
     }
   },
   methods: {
     ...mapActions(["addContact"]),
 
     handleChangeName({ target }) {
-      this.firstName = target.value;
+      this.name = target.value;
     },
-    handleChangeLastName({ target }) {
-      this.lastName = target.value;
-    },
-    handleChangeEmail({ target }) {
+     handleChangeEmail({ target }) {
       this.email = target.value;
+    },
+    handleChangeAddress({ target }) {
+      this.address = target.value;
     },
     handleSubmit(e) {
       this.addContact({
         id: v1(),
-        firstName: this.firstName,
-        lastName: this.lastName,
+        name: this.name,
         email: this.email,
+        address: this.address,
       })
-      this.firstName = "";
-      this.lastName = "";
+      this.name = "";
       this.email = "";
+      this.address = "";
     },
-    handleInput() {
-      $('input').focus(function(){
-        $(this).parents('.form-group').addClass('focused');
-      });
-
-      $('input').blur(function(){
-        var inputValue = $(this).val();
-        if ( inputValue == "" ) {
-          $(this).removeClass('filled');
-          $(this).parents('.form-group').removeClass('focused');  
-        } else {
-          $(this).addClass('filled');
-        }
-      })  
-    }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .form {
     &-wrapper {
       max-width: 30%;
@@ -136,12 +122,38 @@ export default {
     }
   }
 
-.focused .form-label {
+.focused .form__label {
   transform: translateY(-125%);
   font-size: .75em;
 }
 
-.form-input.filled {
+.filled {
   box-shadow: 0 2px 0 0 lightgreen;
 }
+
+button {
+    outline: 0;
+    padding: 0 16px;
+    user-select: none;
+    overflow: hidden;
+    font-size: 13px;
+    line-height: 32.4px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    text-align: center;
+    height: 32.4px;
+    cursor: pointer;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #26a69a;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    transition: .3s ease-out;
+  }
+
+  button:hover {
+    background-color: #2bbbad;
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+    transition: .3s ease-out;
+  }
 </style>

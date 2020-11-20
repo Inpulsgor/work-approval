@@ -4,9 +4,9 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>First name</th>
-          <th>Last name</th>
+          <th>Name</th>
           <th>Email</th>
+          <th>Address</th>
           <th></th>
           <th></th>
         </tr>
@@ -14,11 +14,11 @@
       <tbody>
         <tr v-for="(contact, index) of allContacts" :key="contact.id">
               <td data-label="#">{{index + 1}}</td>
-              <td data-label="First name">{{contact.firstName}}</td>
-              <td data-label="Last name">{{contact.lastName}}</td>
+              <td data-label="Name">{{contact.name}}</td>
               <td data-label="Email">{{contact.email}}</td>
+              <td data-label="Address">{{contact.address}}</td>
               <td>
-                <router-link tag="button" :to="'/about/' + contact.id">Edit</router-link>
+                <router-link tag="button" :to="'/about/' + contact.id">details</router-link>
               </td>
               <td>
                 <button @click="deleteContact(contact.id)">Delete</button>
@@ -45,7 +45,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 table {
   border-collapse: collapse;
   margin: 0;

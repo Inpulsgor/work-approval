@@ -11,6 +11,8 @@ export default new Vuex.Store({
 
   getters: {
     allContacts: (state) => state.contacts,
+    contactInfo: (state) => (id) =>
+      state.contacts.find((contact) => contact.id === id),
   },
 
   actions: {
