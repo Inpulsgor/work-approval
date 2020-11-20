@@ -1,7 +1,6 @@
 <template>
     <div class="contact">
     <form class="contact__form" @submit.prevent="handleSubmit">
-
       <label>First name
         <input @change="handleChangeName" v-bind:value="firstName" type="text" name="firstName" required>
       </label>
@@ -15,7 +14,6 @@
       </label>
 
       <button type="submit">Add</button>
-
     </form>
   </div>
 </template>

@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    contacts: [],
+    contacts: JSON.parse(localStorage.getItem("contacts") || "[]"),
     confirmed: false,
   },
   getters: {
@@ -13,17 +13,19 @@ export default new Vuex.Store({
   },
   actions: {
     addContact({ commit }, contact) {
-      commit("add_contact", contact);
+      commit("addContact", contact);
     },
     deleteContact({ commit }, id) {
-      commit("delete_contact", id);
+      commit("deleteContact", id);
     },
   },
   mutations: {
-    add_contact(state, contact) {
+    addContact(state, contact) {
       state.contacts.push(contact);
+
+      localStorage.setItem("contacts", JSON.stringify(state.contacts));
     },
-    delete_contact(state, id) {
+    deleteContact(state, id) {
       state.contacts = state.contacts.filter((contact) => contact.id !== id);
     },
   },
