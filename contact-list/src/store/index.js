@@ -8,9 +8,11 @@ export default new Vuex.Store({
     contacts: JSON.parse(localStorage.getItem("contacts") || "[]"),
     confirmed: false,
   },
+
   getters: {
     allContacts: (state) => state.contacts,
   },
+
   actions: {
     addContact({ commit }, contact) {
       commit("addContact", contact);
@@ -19,15 +21,17 @@ export default new Vuex.Store({
       commit("deleteContact", id);
     },
   },
+
   mutations: {
     addContact(state, contact) {
       state.contacts.push(contact);
-
       localStorage.setItem("contacts", JSON.stringify(state.contacts));
     },
     deleteContact(state, id) {
       state.contacts = state.contacts.filter((contact) => contact.id !== id);
+      localStorage.setItem("contacts", JSON.stringify(state.contacts));
     },
   },
+
   modules: {},
 });

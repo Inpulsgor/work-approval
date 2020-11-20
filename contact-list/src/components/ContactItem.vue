@@ -4,7 +4,7 @@
       <span>{{contact.firstName}}</span>
       <span>{{contact.lastName}}</span>
       <span>{{contact.email}}</span>
-      <button>Edit</button>
+      <router-link tag="button" :to="'/about/' + contact.id">Edit</router-link>
       <button @click="deleteContact(contact.id)">Delete</button>
     </div>
   </li>
@@ -20,8 +20,14 @@ export default {
     contact: {}
   },
   methods: {
-    ...mapActions(['deleteContact'])
+    ...mapActions(['deleteContact']),
+    handleEdit(id) {
+      console.dir(id)
+    
+      this.$router.push('./about')
+    },
   }
+// @click="handleEdit(contact.id)"
 }
 </script>
 

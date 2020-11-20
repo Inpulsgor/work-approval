@@ -19,8 +19,8 @@ export default {
   }
 
   body {
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.4;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.25;
   }
 
   .container {
