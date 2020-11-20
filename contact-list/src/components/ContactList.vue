@@ -1,6 +1,5 @@
 <template>
-  <div>
-
+  <div class="table-wrapper">
     <table v-if="allContacts.length">
       <thead>
         <tr>
@@ -27,20 +26,16 @@
             </tr>
       </tbody>
     </table>
-
     <p v-else>Contacts list empty :(</p>
   </div>
 </template>
 
 <script>
-import ContactItem from '../components/ContactItem';
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name: 'contactList',
-    components: {
-      ContactItem,
-    },
+    components: {},
     methods: {
       ...mapActions(['deleteContact']),
     },

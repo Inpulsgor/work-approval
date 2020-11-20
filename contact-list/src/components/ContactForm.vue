@@ -91,9 +91,13 @@ export default {
     &__group {
       position:relative;  
 
-       /* & + .form-group {
+       &:last-of-type {
+        margin-bottom: 20px;
+      }
+
+       & + .form-group {
         margin-top: 30px;
-       } */
+       }
     }
 
     &__label {
@@ -126,6 +130,8 @@ export default {
     }
 
     &__button {
+      display: block;
+      width: 40%;
       margin: 0 auto; 
     }
   }
